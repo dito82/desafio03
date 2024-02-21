@@ -6,11 +6,13 @@ import com.devsuperior.desafio03.entity.Client;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 public class ClientDTO {
 
 	private Long id;
 
+	@Size(min = 3, message = "O nome precisa ter no mínimo três caracteres.")
 	@NotBlank(message = "Não pode ser vazio.")
 	private String name;
 	private String cpf;

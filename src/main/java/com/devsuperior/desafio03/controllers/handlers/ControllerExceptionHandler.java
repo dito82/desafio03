@@ -18,6 +18,16 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
+	
+	/*
+	 * 400 - Bad request (erro genérico) 
+	 * 401 - Unauthorized (falha na autenticação)
+	 * 403 - Forbidden (acesso negado) 
+	 * 404 - Not found 
+	 * 409 - Conflict 
+	 * 415 - Unsupported Media Type 
+	 * 422 - Unprocessable entity
+	 */
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<CustomError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {

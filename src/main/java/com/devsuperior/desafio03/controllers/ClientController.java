@@ -39,13 +39,17 @@ public class ClientController {
 		return ResponseEntity.ok(dto);
 	}
 
-	/* paginando a consulta: Pageable e Page<> */
+	/*
+	 * paginando a consulta: Pageable e Page<> 
+	 * ResponseEntity - controla o status code e cabeçalhos da resposta que será devolvida pela API
+	 */
 	@GetMapping
 	public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable) {
 		Page<ClientDTO> dto = service.findAll(pageable);
 		return ResponseEntity.ok(dto);
 	}
 
+	/* @Valid - Faz a validação que foi colocada no DTO */
 	@PostMapping
 	public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto) {
 		dto = service.insert(dto);
@@ -53,6 +57,7 @@ public class ClientController {
 		return ResponseEntity.created(uri).body(dto);
 	}
 
+	/* @RequestBody - corpo da edição pegando os dados ClientDTO */
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<ClientDTO> update(@PathVariable Long id, @Valid @RequestBody ClientDTO dto) {
 		dto = service.update(id, dto);
